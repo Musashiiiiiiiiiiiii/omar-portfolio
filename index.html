@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omar El Idrissi El Hassani | Data Portfolio</title>
+  <style>
+    :root {
+      --bg: #07111d;
+      --paper: rgba(10, 21, 37, 0.86);
+      --ink: #ebf3ff;
+      --muted: #a1b1c8;
+      --navy: #9fc6ff;
+      --teal: #44d4c7;
+      --sand: #13263c;
+      --amber: #ffad66;
+      --line: rgba(159, 198, 255, 0.12);
+      --shadow: 0 24px 60px rgba(2, 8, 15, 0.42);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+      --page-bg:
+        radial-gradient(circle at top left, rgba(68, 212, 199, 0.18), transparent 26%),
+        radial-gradient(circle at top right, rgba(159, 198, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 50% 120%, rgba(255, 173, 102, 0.10), transparent 30%),
+        linear-gradient(180deg, #08111d 0%, #0b1727 50%, #07111d 100%);
+      --topbar-bg: rgba(6, 16, 28, 0.76);
+      --topbar-border: rgba(159, 198, 255, 0.10);
+      --switch-bg: rgba(159, 198, 255, 0.08);
+      --switch-active-bg: rgba(255, 255, 255, 0.92);
+      --switch-active-color: #234f8f;
+      --switch-active-shadow: 0 8px 18px rgba(2, 8, 15, 0.28);
+      --btn-secondary-bg: rgba(159, 198, 255, 0.08);
+      --btn-secondary-border: rgba(159, 198, 255, 0.12);
+      --strong-surface-bg: rgba(12, 26, 43, 0.92);
+      --strong-surface-border: rgba(159, 198, 255, 0.10);
+      --strong-surface-shadow: 0 16px 34px rgba(2, 8, 15, 0.26);
+      --project-surface: linear-gradient(180deg, rgba(16, 32, 52, 0.82), rgba(12, 24, 40, 0.96));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body[data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    body[data-theme="light"] {
+      color-scheme: light;
+      --bg: #eef4fb;
+      --paper: rgba(255, 255, 255, 0.88);
+      --ink: #10233c;
+      --muted: #556b84;
+      --navy: #2b61c9;
+      --teal: #1ca69d;
+      --sand: #dbe8f6;
+      --amber: #bf6d20;
+      --line: rgba(43, 97, 201, 0.14);
+      --shadow: 0 18px 42px rgba(24, 48, 78, 0.12);
+      --page-bg:
+        radial-gradient(circle at top left, rgba(28, 166, 157, 0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(43, 97, 201, 0.14), transparent 28%),
+        radial-gradient(circle at 50% 120%, rgba(191, 109, 32, 0.10), transparent 30%),
+        linear-gradient(180deg, #f3f8fd 0%, #edf4fb 48%, #e6eff9 100%);
+      --topbar-bg: rgba(245, 249, 254, 0.84);
+      --topbar-border: rgba(43, 97, 201, 0.12);
+      --switch-bg: rgba(43, 97, 201, 0.08);
+      --switch-active-bg: #214f99;
+      --switch-active-color: #f7fbff;
+      --switch-active-shadow: 0 10px 20px rgba(33, 79, 153, 0.18);
+      --btn-secondary-bg: rgba(255, 255, 255, 0.86);
+      --btn-secondary-border: rgba(43, 97, 201, 0.14);
+      --strong-surface-bg: rgba(255, 255, 255, 0.94);
+      --strong-surface-border: rgba(43, 97, 201, 0.12);
+      --strong-surface-shadow: 0 14px 28px rgba(33, 79, 153, 0.12);
+      --project-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.92));
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aptos", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+      background: var(--page-bg);
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .lang-fr {
+      display: none;
+    }
+
+    body[data-lang="fr"] .lang-en {
+      display: none;
+    }
+
+    body[data-lang="fr"] .lang-fr {
+      display: initial;
+    }
+
+    body[data-lang="en"] .lang-en {
+      display: initial;
+    }
+
+    body[data-lang="en"] .lang-fr {
+      display: none;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: var(--topbar-bg);
+      border-bottom: 1px solid var(--topbar-border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: #fff;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      font-size: 18px;
+      box-shadow: 0 12px 24px rgba(24, 53, 79, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links button:hover,
+    .nav-links a:focus-visible,
+    .nav-links button:focus-visible {
+      color: var(--navy);
+    }
+
+    .lang-switch,
+    .theme-switch {
+      display: inline-flex;
+      padding: 5px;
+      border-radius: 999px;
+      background: var(--switch-bg);
+      gap: 4px;
+    }
+
+    .lang-switch button,
+    .theme-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .lang-switch button.active,
+    .theme-switch button.active {
+      background: var(--switch-active-bg);
+      color: var(--switch-active-color);
+      box-shadow: var(--switch-active-shadow);
+    }
+
+    .hero {
+      padding: 44px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 0;
+      align-content: start;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .card,
+    .timeline-card,
+    .project-card,
+    .step,
+    .footer-card {
+      background: var(--paper);
+      border: 1px solid rgba(159, 198, 255, 0.12);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      display: grid;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.98fr);
+      gap: 24px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy-main {
+      max-width: 780px;
+      display: grid;
+      gap: 20px;
+      align-content: start;
+    }
+
+    .hero-copy-side {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .hero-copy-main > .hero-side-heading,
+    .hero-copy-main > .hero-side-text {
+      display: none;
+    }
+
+    .hero-copy-side > .hero-side-heading {
+      display: none;
+    }
+
+    .hero-copy-side > .hero-side-text {
+      display: block;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -28% auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(68, 212, 199, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(68, 212, 199, 0.10);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 12px;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      font-size: clamp(34px, 4.6vw, 54px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      max-width: 12.2ch;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-summary {
+      font-size: 18px;
+      line-height: 1.72;
+      color: var(--muted);
+      max-width: 42ch;
+    }
+
+    .hero-copy-side .hero-summary,
+    .hero-copy-side .hero-side-text {
+      max-width: none;
+      line-height: 1.58;
+    }
+
+    .hero-side-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-side-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-side-text {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-mini-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-mini-list li {
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: rgba(159, 198, 255, 0.06);
+      border: 1px solid rgba(159, 198, 255, 0.10);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .hero-mini-list strong {
+      color: var(--ink);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #17335d, #206f86);
+      color: #f7fbff;
+      box-shadow: 0 18px 32px rgba(5, 12, 20, 0.34);
+    }
+
+    .btn-secondary {
+      background: var(--btn-secondary-bg);
+      color: var(--ink);
+      border: 1px solid var(--btn-secondary-border);
+    }
+
+    .hero-panel {
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      align-self: start;
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .panel-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .panel-subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .panel-badge {
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255, 173, 102, 0.12);
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .panel-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .stats {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .stat-value {
+      font-family: "Georgia", "Palatino Linotype", serif;
+      font-size: 38px;
+      line-height: 1;
+      color: var(--navy);
+    }
+
+    .stat-label {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 70px 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(220px, 0.28fr);
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section-title {
+      margin-top: 10px;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      color: var(--navy);
+    }
+
+    .section-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      background: linear-gradient(180deg, var(--navy), var(--amber));
+      border-radius: 8px;
+    }
+
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-role {
+      font-size: 24px;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      color: var(--navy);
+    }
+
+    .timeline-company {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .timeline-date {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(159, 198, 255, 0.08);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .timeline-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .expertise-grid,
+    .projects-grid,
+    .steps-grid,
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .expertise-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .expertise-card,
+    .project-card,
+    .step,
+    .footer-card {
+      padding: 24px;
+    }
+
+    .expertise-card {
+      border-radius: var(--radius-lg);
+      background: var(--strong-surface-bg);
+      border: 1px solid var(--strong-surface-border);
+      box-shadow: var(--strong-surface-shadow);
+    }
+
+    .icon-chip {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(159, 198, 255, 0.12), rgba(68, 212, 199, 0.12));
+      color: var(--navy);
+      font-size: 21px;
+    }
+
+    .card-title {
+      margin-top: 16px;
+      font-size: 22px;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      color: var(--navy);
+    }
+
+    .card-text {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      background:
+        var(--project-surface),
+        var(--paper);
+      border: 1px solid var(--strong-surface-border);
+    }
+
+    .project-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(68, 212, 199, 0.12);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-bullets {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .step {
+      border-radius: var(--radius-lg);
+      position: relative;
+      padding-top: 56px;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+    }
+
+    .footer-card {
+      min-height: 220px;
+    }
+
+    .footer-card h3 {
+      margin: 0;
+      font-family: "Georgia", "Palatino Linotype", serif;
+      font-size: 34px;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    .footer-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .meta-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    footer {
+      padding: 70px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .section-head,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-grid,
+      .projects-grid,
+      .steps-grid,
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(100% - 20px, var(--max));
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .timeline-card,
+      .project-card,
+      .step,
+      .footer-card,
+      .card,
+      .expertise-card {
+        padding: 20px;
+      }
+
+      .hero h1,
+      .section-title,
+      .footer-card h3 {
+        max-width: none;
+      }
+
+      .hero-copy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .expertise-grid,
+      .projects-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-head,
+      .panel-top {
+        flex-direction: column;
+      }
+
+      .timeline-date,
+      .panel-badge {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body data-lang="en" data-theme="dark">
+  <div class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top">
+        <span class="brand-mark">OE</span>
+        <span>Omar El Idrissi</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#impact">
+          <span class="lang-en">Impact</span>
+          <span class="lang-fr">Impact</span>
+        </a>
+        <a href="#expertise">
+          <span class="lang-en">Expertise</span>
+          <span class="lang-fr">Expertise</span>
+        </a>
+        <a href="#projects">
+          <span class="lang-en">Projects</span>
+          <span class="lang-fr">Projets</span>
+        </a>
+        <a href="#contact">
+          <span class="lang-en">Contact</span>
+          <span class="lang-fr">Contact</span>
+        </a>
+
+        <div class="theme-switch" aria-label="Theme switch">
+          <button type="button" class="active" data-set-theme="dark">
+            <span class="lang-en">Dark</span>
+            <span class="lang-fr">Sombre</span>
+          </button>
+          <button type="button" data-set-theme="light">
+            <span class="lang-en">Light</span>
+            <span class="lang-fr">Clair</span>
+          </button>
+        </div>
+
+        <div class="lang-switch" aria-label="Language switch">
+          <button type="button" class="active" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="fr">FR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-grid">
+          <article class="hero-copy">
+            <div class="hero-copy-grid">
+              <div class="hero-copy-main">
+                <div class="eyebrow">
+                  <span class="lang-en">Open to data, analytics and AI opportunities</span>
+                  <span class="lang-fr">Ouvert aux opportunités data, analytics et IA</span>
+                </div>
+
+                <h1>
+                  <span class="lang-en">Data Analyst &amp; Data Scientist for high-impact teams.</span>
+                  <span class="lang-fr">Data Analyst &amp; Data Scientist pour des équipes à fort impact.</span>
+                </h1>
+
+                <div class="hero-side-heading">
+                  <div class="hero-side-title">
+                    <span class="lang-en">At a glance</span>
+                    <span class="lang-fr">En bref</span>
+                  </div>
+                  <div class="panel-badge">
+                    <span class="lang-en">MSc + Cum Laude</span>
+                    <span class="lang-fr">Master + Cum Laude</span>
+                  </div>
+                </div>
+
+                <p class="hero-side-text">
+                  <span class="lang-en">I help companies turn customer, product, and risk data into better decisions. My background spans marketing analytics, sentiment analysis, BI, forecasting, and cybersecurity analytics.</span>
+                  <span class="lang-fr">Une approche appliqu&eacute;e de l'analytics entre marketing, connaissance client, pr&eacute;vision et environnements cybers&eacute;curit&eacute;.</span>
+                </p>
+
+                <div class="cta-row">
+                  <a class="btn btn-primary" href="mailto:o.elidrissielhassani@outlook.com">
+                    <span class="lang-en">Let's talk</span>
+                    <span class="lang-fr">Échangeons</span>
+                  </a>
+                  <a class="btn btn-secondary" href="#projects">
+                    <span class="lang-en">View selected work</span>
+                    <span class="lang-fr">Voir mes réalisations</span>
+                  </a>
+                  <a class="btn btn-secondary" href="omar_cv.pdf">
+                    <span class="lang-en">Download CV</span>
+                    <span class="lang-fr">Télécharger le CV</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-copy-side">
+                <div class="hero-side-heading">
+                  <div class="hero-side-title">
+                    <span class="lang-en">At a glance</span>
+                    <span class="lang-fr">En bref</span>
+                  </div>
+                  <div class="panel-badge">
+                    <span class="lang-en">MSc + Cum Laude</span>
+                    <span class="lang-fr">Master + Cum Laude</span>
+                  </div>
+                </div>
+
+                <p class="hero-side-text">
+                  <span class="lang-en">I help companies turn customer, product, and risk data into better decisions. My background spans marketing analytics, sentiment analysis, BI, forecasting, and cybersecurity analytics.</span>
+                  <span class="lang-fr">J'aide les entreprises à transformer les données clients, produit et risque en meilleures décisions. Mon parcours couvre le marketing analytics, l'analyse de sentiment, la BI, la prévision et l'analyse cybersécurité.</span>
+                </p>
+
+                <ul class="hero-mini-list">
+                  <li>
+                    <span class="lang-en"><strong>Core stack:</strong> SQL, Python, Power BI, Scikit-learn, Airflow, NiFi</span>
+                    <span class="lang-fr"><strong>Stack clé :</strong> SQL, Python, Power BI, Scikit-learn, Airflow, NiFi</span>
+                  </li>
+                  <li>
+                    <span class="lang-en"><strong>Focus areas:</strong> customer analytics, segmentation, sentiment analysis, forecasting</span>
+                    <span class="lang-fr"><strong>Domaines clés :</strong> customer analytics, segmentation, analyse de sentiment, prévision</span>
+                  </li>
+                  <li>
+                    <span class="lang-en"><strong>Based in:</strong> Casablanca and Paris. <strong>Languages:</strong> Arabic, French, English</span>
+                    <span class="lang-fr"><strong>Basé à :</strong> Casablanca et Paris. <strong>Langues :</strong> arabe, français, anglais</span>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </article>
+
+          <div class="hero-side">
+            <aside class="hero-panel">
+              <div class="panel-top">
+                <div>
+                  <div class="panel-title">
+                    <span class="lang-en">Current focus</span>
+                    <span class="lang-fr">Focus actuel</span>
+                  </div>
+                  <div class="panel-subtitle">
+                    <span class="lang-en">Blending analytics and data science to improve customer experience, product understanding, and operational decisions.</span>
+                    <span class="lang-fr">À l'intersection de l'analytics et de la data science pour améliorer l'expérience client, la compréhension produit et les décisions opérationnelles.</span>
+                  </div>
+                </div>
+                <div class="panel-badge">
+                  <span class="lang-en">MSc + Cum Laude</span>
+                  <span class="lang-fr">Master + Cum Laude</span>
+                </div>
+              </div>
+
+              <ul class="panel-list">
+                <li>
+                  <span class="lang-en">Reda Marketing: customer segmentation, behavioral analysis, sentiment analysis</span>
+                  <span class="lang-fr">Reda Marketing : segmentation client, analyse comportementale, analyse de sentiment</span>
+                </li>
+                <li>
+                  <span class="lang-en">ACG Cybersecurity: dashboards, anomaly detection, risk and compliance workflows</span>
+                  <span class="lang-fr">ACG Cybersecurity : tableaux de bord, détection d'anomalies, workflows risque et conformité</span>
+                </li>
+                <li>
+                  <span class="lang-en">Projects in medical imaging, energy forecasting, and secure data systems</span>
+                  <span class="lang-fr">Projets en imagerie médicale, prévision énergétique et systèmes de données sécurisés</span>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+
+        <div class="stats">
+          <article class="card">
+            <div class="stat-value">30%</div>
+            <div class="stat-label">
+              <span class="lang-en">increase in positive customer feedback after product insight and sentiment analysis work</span>
+              <span class="lang-fr">hausse des retours clients positifs après le travail d'analyse produit et d'analyse de sentiment</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stat-value">25%</div>
+            <div class="stat-label">
+              <span class="lang-en">faster rollout of an information management system through automated workflows</span>
+              <span class="lang-fr">accélération de la mise en place d'un système de management de l'information grâce aux workflows automatisés</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stat-value">98%</div>
+            <div class="stat-label">
+              <span class="lang-en">real-time incident detection accuracy achieved in enterprise security analysis</span>
+              <span class="lang-fr">précision de détection d'incidents en temps réel atteinte en analyse sécurité</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stat-value">35%</div>
+            <div class="stat-label">
+              <span class="lang-en">reduction in data leakage risk through secure automated pipelines</span>
+              <span class="lang-fr">réduction du risque de fuite de données grâce à des pipelines sécurisés et automatisés</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">
+              <span class="lang-en">Experience & Impact</span>
+              <span class="lang-fr">Expérience & Impact</span>
+            </div>
+            <h2 class="section-title">
+              <span class="lang-en">Work that connects data to business outcomes.</span>
+              <span class="lang-fr">Un travail qui relie la donnée aux résultats business.</span>
+            </h2>
+          </div>
+          <div class="section-text">
+            <span class="lang-en">I combine analytics, modeling, and reporting with a practical understanding of what teams need to move faster and decide better.</span>
+            <span class="lang-fr">Je combine analytics, modélisation et reporting avec une compréhension concrète des besoins des équipes pour aller plus vite et mieux décider.</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-card">
+            <div class="timeline-head">
+              <div>
+                <div class="timeline-role">Data Analyst / Data Scientist</div>
+                <div class="timeline-company">Reda Marketing</div>
+              </div>
+              <div class="timeline-date">Jan 2025 - Present</div>
+            </div>
+            <ul class="timeline-list">
+              <li>
+                <span class="lang-en">Analyzed marketing trends, customer behavior, and audience patterns to improve decision-making, personalization, and ROI.</span>
+                <span class="lang-fr">Analysé les tendances marketing, les comportements clients et les patterns d'audience pour améliorer la prise de décision, la personnalisation et le ROI.</span>
+              </li>
+              <li>
+                <span class="lang-en">Performed customer segmentation to identify higher-value audiences and support more targeted campaigns.</span>
+                <span class="lang-fr">Réalisé des segmentations clients pour identifier les audiences à plus forte valeur et soutenir des campagnes plus ciblées.</span>
+              </li>
+              <li>
+                <span class="lang-en">Used sentiment analysis on feedback data to surface product-line issues and contribute to a 30% increase in positive customer feedback.</span>
+                <span class="lang-fr">Utilisé l'analyse de sentiment sur les retours clients pour faire remonter des problèmes par gamme de produits et contribuer à une hausse de 30 % des retours clients positifs.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="timeline-card">
+            <div class="timeline-head">
+              <div>
+                <div class="timeline-role">Research and Development Engineer</div>
+                <div class="timeline-company">ACG Cybersecurity, Paris, France</div>
+              </div>
+              <div class="timeline-date">
+                <span class="lang-en">Jan 2023 - Aug 2024</span>
+                <span class="lang-fr">Jan 2023 - Août 2024</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li>
+                <span class="lang-en">Built dashboards and reports that made risk trends and security metrics clearer for more proactive decision-making.</span>
+                <span class="lang-fr">Conçu des tableaux de bord et rapports qui rendaient les tendances de risque et les métriques de sécurité plus lisibles pour une prise de décision plus proactive.</span>
+              </li>
+              <li>
+                <span class="lang-en">Implemented automated workflows that made the rollout of the information management system 25% faster.</span>
+                <span class="lang-fr">Mis en place des workflows automatisés qui ont accéléré de 25 % la mise en place du système de management de l'information.</span>
+              </li>
+              <li>
+                <span class="lang-en">Supported anomaly detection, vulnerability analysis, and compliance work across ISO 27001, GDPR, and NIST environments.</span>
+                <span class="lang-fr">Contribué à la détection d'anomalies, à l'analyse de vulnérabilités et à la conformité dans des environnements ISO 27001, GDPR et NIST.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="expertise">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">
+              <span class="lang-en">Expertise</span>
+              <span class="lang-fr">Expertise</span>
+            </div>
+            <h2 class="section-title">
+              <span class="lang-en">A full-stack data profile, from insight to implementation.</span>
+              <span class="lang-fr">Un profil data complet, de l'insight à l'implémentation.</span>
+            </h2>
+          </div>
+          <div class="section-text">
+            <span class="lang-en">My work is strongest where business questions, customer behavior, and technical execution need to meet in the same place.</span>
+            <span class="lang-fr">Mon point fort se situe là où les questions business, le comportement client et l'exécution technique doivent se rejoindre.</span>
+          </div>
+        </div>
+
+        <div class="expertise-grid">
+          <article class="expertise-card">
+            <div class="icon-chip">01</div>
+            <div class="card-title">
+              <span class="lang-en">Marketing Analytics</span>
+              <span class="lang-fr">Marketing Analytics</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Trend analysis, campaign understanding, KPI reading, and decision support focused on business impact.</span>
+              <span class="lang-fr">Analyse de tendances, compréhension des campagnes, lecture de KPI et aide à la décision orientée impact business.</span>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="icon-chip">02</div>
+            <div class="card-title">
+              <span class="lang-en">Customer Intelligence</span>
+              <span class="lang-fr">Customer Intelligence</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Segmentation, behavioral analysis, and sentiment analysis to improve personalization and product understanding.</span>
+              <span class="lang-fr">Segmentation, analyse comportementale et analyse de sentiment pour améliorer la personnalisation et la compréhension produit.</span>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="icon-chip">03</div>
+            <div class="card-title">
+              <span class="lang-en">BI & Reporting</span>
+              <span class="lang-fr">BI & Reporting</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">SQL, Power BI, and dashboarding that turn complex datasets into readable decision tools.</span>
+              <span class="lang-fr">SQL, Power BI et tableaux de bord pour transformer des jeux de données complexes en outils de décision lisibles.</span>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="icon-chip">04</div>
+            <div class="card-title">
+              <span class="lang-en">ML & NLP</span>
+              <span class="lang-fr">ML & NLP</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Classification, forecasting, deep learning, and natural language processing grounded in real use cases.</span>
+              <span class="lang-fr">Classification, prévision, deep learning et traitement du langage naturel ancrés dans des cas d'usage concrets.</span>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="icon-chip">05</div>
+            <div class="card-title">
+              <span class="lang-en">Data Engineering</span>
+              <span class="lang-fr">Data Engineering</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Workflow automation, pipelines, and data preparation across analytics and secure system contexts.</span>
+              <span class="lang-fr">Automatisation de workflows, pipelines et préparation des données dans des contextes analytics et systèmes sécurisés.</span>
+            </div>
+          </article>
+
+          <article class="expertise-card">
+            <div class="icon-chip">06</div>
+            <div class="card-title">
+              <span class="lang-en">Risk & Compliance</span>
+              <span class="lang-fr">Risque & Conformité</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Experience supporting risk analysis and compliance work under ISO 27001, GDPR, and NIST constraints.</span>
+              <span class="lang-fr">Expérience dans l'analyse des risques et la conformité sous contraintes ISO 27001, GDPR et NIST.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">
+              <span class="lang-en">Selected Projects</span>
+              <span class="lang-fr">Projets Sélectionnés</span>
+            </div>
+            <h2 class="section-title">
+              <span class="lang-en">Projects that show range, depth, and applied problem solving.</span>
+              <span class="lang-fr">Des projets qui montrent l'étendue, la profondeur et la capacité à résoudre des problèmes concrets.</span>
+            </h2>
+          </div>
+          <div class="section-text">
+            <span class="lang-en">From medical imaging to energy forecasting and secure data workflows, I like projects where data has to produce a real operational outcome.</span>
+            <span class="lang-fr">De l'imagerie médicale à la prévision énergétique et aux workflows de données sécurisés, j'aime les projets où la donnée doit produire un résultat opérationnel réel.</span>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-tag">
+              <span class="lang-en">Medical AI</span>
+              <span class="lang-fr">IA Médicale</span>
+            </div>
+            <div class="card-title">
+              <span class="lang-en">Pneumonia Detection from Medical Imaging</span>
+              <span class="lang-fr">Détection de la Pneumonie par Imagerie Médicale</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">A classification project built around image data preparation, model training, and performance evaluation.</span>
+              <span class="lang-fr">Un projet de classification centré sur la préparation des images, l'entraînement de modèles et l'évaluation des performances.</span>
+            </div>
+            <ul class="project-bullets">
+              <li>
+                <span class="lang-en">Developed a model to detect pneumonia from medical imaging data.</span>
+                <span class="lang-fr">Développé un modèle de détection de pneumonie à partir de données d'imagerie médicale.</span>
+              </li>
+              <li>
+                <span class="lang-en">Worked across preprocessing, modeling, and evaluation stages.</span>
+                <span class="lang-fr">Intervenu sur le prétraitement, la modélisation et l'évaluation.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-tag">
+              <span class="lang-en">Forecasting</span>
+              <span class="lang-fr">Prévision</span>
+            </div>
+            <div class="card-title">
+              <span class="lang-en">Smart Grid Energy Consumption Forecasting</span>
+              <span class="lang-fr">Prévision de Consommation Énergétique via Smart Grid</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">An analytics and forecasting project focused on electricity behavior, annual trends, and future demand.</span>
+              <span class="lang-fr">Un projet d'analyse et de prévision centré sur les comportements de consommation électrique, les tendances annuelles et la demande future.</span>
+            </div>
+            <ul class="project-bullets">
+              <li>
+                <span class="lang-en">Analyzed facility electricity data to identify patterns and yearly behavior.</span>
+                <span class="lang-fr">Analysé les données de consommation d'un site pour identifier des patterns et des comportements annuels.</span>
+              </li>
+              <li>
+                <span class="lang-en">Built forecasting models to predict future energy consumption.</span>
+                <span class="lang-fr">Construit des modèles de prévision pour estimer la consommation future.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-tag">
+              <span class="lang-en">Secure Data Systems</span>
+              <span class="lang-fr">Systèmes de Données Sécurisés</span>
+            </div>
+            <div class="card-title">
+              <span class="lang-en">Enterprise Data Security & Risk Optimization</span>
+              <span class="lang-fr">Optimisation de la Sécurité des Données et du Risque</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">A data security project combining anomaly detection, pipelines, and measurable operational improvement.</span>
+              <span class="lang-fr">Un projet data sécurité mêlant détection d'anomalies, pipelines et amélioration opérationnelle mesurable.</span>
+            </div>
+            <ul class="project-bullets">
+              <li>
+                <span class="lang-en">Reached 98% incident detection accuracy in real time on logs and transactional data.</span>
+                <span class="lang-fr">Atteint 98 % de détection d'incidents en temps réel sur des logs et données transactionnelles.</span>
+              </li>
+              <li>
+                <span class="lang-en">Reduced data leakage risk by 35% through secure automated pipelines.</span>
+                <span class="lang-fr">Réduit les risques de fuite de données de 35 % grâce à des pipelines sécurisés et automatisés.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">
+              <span class="lang-en">How I Work</span>
+              <span class="lang-fr">Ma Façon de Travailler</span>
+            </div>
+            <h2 class="section-title">
+              <span class="lang-en">A practical process from context to decisions.</span>
+              <span class="lang-fr">Une démarche concrète, du contexte à la décision.</span>
+            </h2>
+          </div>
+          <div class="section-text">
+            <span class="lang-en">I like projects where the goal is clear, the data is imperfect, and the output still needs to help people take action.</span>
+            <span class="lang-fr">J'aime les projets où l'objectif est clair, les données imparfaites, et le résultat doit malgré tout aider les équipes à agir.</span>
+          </div>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step">
+            <div class="step-number">01</div>
+            <div class="card-title">
+              <span class="lang-en">Understand the need</span>
+              <span class="lang-fr">Comprendre le besoin</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Start from the business question, the product issue, or the operational bottleneck.</span>
+              <span class="lang-fr">Partir de la question business, du problème produit ou du point de friction opérationnel.</span>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <div class="card-title">
+              <span class="lang-en">Structure the data</span>
+              <span class="lang-fr">Structurer la donnée</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Clean, connect, and prepare the data so that the analysis or model can actually be trusted.</span>
+              <span class="lang-fr">Nettoyer, relier et préparer les données pour que l'analyse ou le modèle soit réellement fiable.</span>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <div class="card-title">
+              <span class="lang-en">Build insight or model</span>
+              <span class="lang-fr">Construire l'insight ou le modèle</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Use analytics, dashboards, forecasting, segmentation, or NLP depending on the problem.</span>
+              <span class="lang-fr">Utiliser l'analytics, les dashboards, la prévision, la segmentation ou le NLP selon le problème.</span>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-number">04</div>
+            <div class="card-title">
+              <span class="lang-en">Deliver usable output</span>
+              <span class="lang-fr">Livrer un résultat exploitable</span>
+            </div>
+            <div class="card-text">
+              <span class="lang-en">Translate the work into decisions, reporting, or automation that teams can use immediately.</span>
+              <span class="lang-fr">Transformer le travail en décisions, reporting ou automatisation que les équipes peuvent utiliser immédiatement.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell footer-grid">
+        <article class="footer-card">
+          <h3>
+            <span class="lang-en">Looking for a data profile who can connect insight, modeling, and execution?</span>
+            <span class="lang-fr">À la recherche d'un profil data capable de relier insight, modélisation et exécution ?</span>
+          </h3>
+          <p>
+            <span class="lang-en">I am available for roles and projects in data analytics, data science, BI, and applied AI.</span>
+            <span class="lang-fr">Je suis disponible pour des postes et projets en data analytics, data science, BI et IA appliquée.</span>
+          </p>
+
+          <div class="footer-actions">
+            <a class="btn btn-primary" href="mailto:o.elidrissielhassani@outlook.com">
+              <span class="lang-en">Email me</span>
+              <span class="lang-fr">M'écrire</span>
+            </a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/omarelidrissielhassani">LinkedIn</a>
+            <a class="btn btn-secondary" href="omar_cv_fr.pdf">
+              <span class="lang-en">French CV</span>
+              <span class="lang-fr">CV Français</span>
+            </a>
+          </div>
+        </article>
+
+        <aside class="footer-card">
+          <div class="section-kicker">
+            <span class="lang-en">Credentials</span>
+            <span class="lang-fr">Références</span>
+          </div>
+          <ul class="meta-list">
+            <li>
+              <span class="lang-en">MSc in Big Data Analytics, Al Akhawayn University</span>
+              <span class="lang-fr">Master en Big Data Analytics, Al Akhawayn University</span>
+            </li>
+            <li>
+              <span class="lang-en">BSc in Computer Science, cum laude</span>
+              <span class="lang-fr">Bachelor en Computer Science, cum laude</span>
+            </li>
+            <li>
+              <span class="lang-en">ISO 27001 Lead Implementer</span>
+              <span class="lang-fr">ISO 27001 Lead Implementer</span>
+            </li>
+            <li>
+              <span class="lang-en">Languages: Arabic, French, English</span>
+              <span class="lang-fr">Langues : arabe, français, anglais</span>
+            </li>
+            <li>
+              <span class="lang-en">Email: o.elidrissielhassani@outlook.com</span>
+              <span class="lang-fr">Email : o.elidrissielhassani@outlook.com</span>
+            </li>
+            <li>Casablanca, Morocco / Paris, France</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span class="lang-en">Designed as a portfolio-style CV website inspired by your strongest work, metrics, and bilingual applications.</span>
+      <span class="lang-fr">Conçu comme un site CV portfolio à partir de vos réalisations, métriques et candidatures bilingues.</span>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const langButtons = document.querySelectorAll("[data-set-lang]");
+    const themeButtons = document.querySelectorAll("[data-set-theme]");
+
+    function setLang(lang) {
+      body.setAttribute("data-lang", lang);
+      langButtons.forEach((button) => {
+        button.classList.toggle("active", button.getAttribute("data-set-lang") === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+
+    function setTheme(theme) {
+      body.setAttribute("data-theme", theme);
+      document.documentElement.style.colorScheme = theme;
+      themeButtons.forEach((button) => {
+        button.classList.toggle("active", button.getAttribute("data-set-theme") === theme);
+      });
+      try {
+        window.localStorage.setItem("portfolio-theme", theme);
+      } catch (error) {
+        console.warn("Theme preference could not be saved.", error);
+      }
+    }
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => setLang(button.getAttribute("data-set-lang")));
+    });
+
+    themeButtons.forEach((button) => {
+      button.addEventListener("click", () => setTheme(button.getAttribute("data-set-theme")));
+    });
+
+    let initialTheme = body.getAttribute("data-theme") || "dark";
+
+    try {
+      const savedTheme = window.localStorage.getItem("portfolio-theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        initialTheme = savedTheme;
+      }
+    } catch (error) {
+      console.warn("Theme preference could not be loaded.", error);
+    }
+
+    setLang(body.getAttribute("data-lang") || "en");
+    setTheme(initialTheme);
+  </script>
+</body>
+</html>

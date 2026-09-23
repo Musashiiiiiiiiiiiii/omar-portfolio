@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "source": "/omar_portfolio.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/omar_portfolio",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}
